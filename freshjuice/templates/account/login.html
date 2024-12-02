@@ -1,0 +1,49 @@
+{% load i18n %}
+{% load static %}
+{% load socialaccount %}
+{% block content %}
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+<div class="container">
+            <div class="row justify-content-center">
+
+                            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                                <div class="card o-hidden border-0 shadow-lg my-5">
+
+                                    <div class="card-body p-0">
+
+                                        <div class="row">
+
+                                            <div class="col-lg-6">
+
+
+
+                                                <h2><img src="{% static 'assets/img/juicehaven.png' %}" height="100"></h2>
+                                                <p>Login to Juice Haven</p>  <!-- Add this line -->
+                                                <form method="post" action="{% url 'account_login' %}">
+                                                    {% csrf_token %}
+                                                    {{ form.as_p }}
+                                                    <button type="submit" class="btn btn-google btn-user btn-block"><i class="fab fa-google fa-fw"></i>{% trans "Login" %}</button>
+                                                </form>
+                                                <br>
+                                                    <a href="{% provider_login_url 'google' %}" class="btn btn-google btn-user btn-block"><i class="fab fa-google fa-fw"></i>Login with Google</a>
+
+
+                                                <p>
+                                                    <a href="{% url 'account_signup' %}">{% trans "Don't have an account? Sign up!" %}</a>
+                                                </p>
+
+                                            </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+</div>
+{% endblock %}
